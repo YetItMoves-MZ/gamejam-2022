@@ -48,7 +48,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
     [Header("Animation Variables")]
     [Tooltip("When to start landing animation")]
-    [SerializeField] private float animationGroundOffset = -0.8f;
+    [SerializeField] private float AnimationGroundOffset = -0.8f;
+
+    [Header("Powers Variables")]
+    [Tooltip("The UnlockHandler Script located in the UnlockHandler Object")]
+    [SerializeField] private UnlocksHandler UnlockHandler;
 
     #endregion
 
@@ -83,7 +87,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     #region booleans
 
-    // TODO will we use it?
     private bool IsDashing
     {
         get
@@ -154,17 +157,27 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (this.IsAlive)
         {
-            this.HandleCrouchInput();
-            this.HandleJump();
+            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Movement])
+            {
+                this.HandleMovement();  
+            }
+            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Crawl])
+            {
+                this.HandleCrouchInput();
+            }
+            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Jump])
+            {
+                this.HandleJump();
+            }
             this.GroundedCheck();
-            this.HandleMovement();
         }
     }
 
+    
     private void HandleMovement()
     {
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = this.IsDashing ? this.dashingModifier * this.MovementSpeed : this.MovementSpeed;
+        float targetSpeed = this.IsDashing && UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Dash] ? this.dashingModifier * this.MovementSpeed : this.MovementSpeed;
 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -245,7 +258,7 @@ public class ThirdPersonMovement : MonoBehaviour
         else
             PlayerAnim.SetBool("isGrounded", false);
 
-        Vector3 landingSphereAnim = new Vector3(transform.position.x, transform.position.y - animationGroundOffset, transform.position.z);
+        Vector3 landingSphereAnim = new Vector3(transform.position.x, transform.position.y - AnimationGroundOffset, transform.position.z);
         if (Physics.CheckSphere(landingSphereAnim, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore))
             PlayerAnim.SetBool("isGrounded", true);
 
