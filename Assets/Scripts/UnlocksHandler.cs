@@ -35,13 +35,14 @@ public class UnlocksHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GainedPower.AddListener(GainedPowers);
-
-        // Initialize array with starting value according to IsAllPowersActive
+        // Initialize array with starting value according to InitAllPowerActive
+        IsPowerActive = new bool[(int)EPowers.EatingCake + 1];
         for (int i = 0; i < (int)EPowers.EatingCake + 1; i++)
         {
             IsPowerActive[i] = InitAllPowerActive;
         }
+
+        GainedPower.AddListener(GainedPowers);
     }
 
     void Update()
