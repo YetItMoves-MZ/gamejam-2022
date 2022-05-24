@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour
+namespace Player
 {
-    // Start is called before the first frame update
-    void Start()
+    public class RespawnScript : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Transform player;
+        [SerializeField] private Transform respawnPoint;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void RespawnPlayer()
+        {
+            // TODO things that do need to reset after death will be reset here.
+
+
+            this.player.transform.position = this.respawnPoint.transform.position;
+            Physics.SyncTransforms();
+        }
     }
 }

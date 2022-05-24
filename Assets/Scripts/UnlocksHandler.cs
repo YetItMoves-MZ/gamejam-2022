@@ -17,6 +17,7 @@ public class UnlocksHandler : MonoBehaviour
         AttackEnemy,
         PickUpBox,
         PushButton,
+        Key,
         EatingCake
     }
 
