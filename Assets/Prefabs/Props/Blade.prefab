@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 807474938912063692}
   - component: {fileID: 8975819502869073048}
   - component: {fileID: 8696645441497188077}
+  - component: {fileID: 8101915503431024100}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
@@ -82,6 +83,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8101915503431024100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348432607558181374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df631617f832a4c43a51370072bdf526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateVector: {x: 0, y: 0, z: 0}
+  degreesPerSecond: 500
+  amplitude: 7261.5
+  frequency: 0.1
 --- !u!1 &7529898076807500157
 GameObject:
   m_ObjectHideFlags: 0
