@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class UnlocksHandler : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class UnlocksHandler : MonoBehaviour
     {
         Default, // Should not occur
         Movement,
-        Jump,
         Breath,
-        Dash,
+        Jump,
         Crawl,
-        AttackEnemy,
-        PickUpBox,
         PushButton,
+        Dash,
+        PickUpBox,
+        AttackEnemy,
         Key,
         EatingCake
     }
@@ -31,6 +32,10 @@ public class UnlocksHandler : MonoBehaviour
     [Tooltip("time it takes the player to die from not breathing")]
     [SerializeField] private float BreathingTime;
     [HideInInspector] public float StartBreathingTime = 0;
+    [Tooltip("insert them in order!")]
+    [SerializeField] private Image[] DisabledPowersUI;
+    [Tooltip("insert them in order!")]
+    [SerializeField] private Image[] EnabledPowersUI;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +76,7 @@ public class UnlocksHandler : MonoBehaviour
         // Gained Power
         IsPowerActive[(int)power] = true;
 
-        // TODO add power change in UI here
+        DisabledPowersUI[(int)power - 1].enabled = false;
+        EnabledPowersUI[(int)power - 1].enabled = true;
     }
 }

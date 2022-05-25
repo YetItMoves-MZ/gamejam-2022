@@ -46,8 +46,6 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     otherObject.SetActive(false);
                     unlocksHandler.GainedPower.Invoke(UnlocksHandler.EPowers.Key);
-                    // TODO add UI of key
-
                 }
                 break;
             case "BoxWithButton":
