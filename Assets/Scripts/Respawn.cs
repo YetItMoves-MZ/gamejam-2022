@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace Player
 {
-    public class RespawnScript : MonoBehaviour
+    public class Respawn : MonoBehaviour
     {
         [SerializeField] private Transform player;
-        [SerializeField] private Transform respawnPoint;
+        [SerializeField] private PlayerInteraction playerInteraction;
 
         public void RespawnPlayer()
         {
             // TODO things that do need to reset after death will be reset here.
+            playerInteraction.holdBox = false;
 
-
-            this.player.transform.position = this.respawnPoint.transform.position;
+            this.player.transform.position = this.transform.position;
             Physics.SyncTransforms();
         }
     }

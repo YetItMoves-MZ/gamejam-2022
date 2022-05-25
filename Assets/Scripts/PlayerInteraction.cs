@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteracte : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private UnlocksHandler unlocksHandler;
     [SerializeField] private GameObject Key;
     [SerializeField] private Animator EnemyAnimator;
     [SerializeField] private float EnemyDeathtime;
+    [SerializeField] private GameObject PlayerBox;
+
     // When did the enemy die
     private float EnemyDiedTime = -5;
     private GameObject Enemy;
+
+    [HideInInspector] public bool holdBox = false;
 
     private void Start()
     {
@@ -59,8 +63,9 @@ public class PlayerInteracte : MonoBehaviour
             case "Box":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PickUpBox] && Input.GetAxis("Use") != 0)
                 {
-                    // TODO make player allways own a box. Here you destroy the other game object.
-                    // When the player press use again, the box he owns will be disabled and a box will be insantiated.
+                    PlayerBox.SetActive(true);
+                    otherObject.SetActive(false);
+                    holdBox = true;
                 }
                 break;
             case "Door":
