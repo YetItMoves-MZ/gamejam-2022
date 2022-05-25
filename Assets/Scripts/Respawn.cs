@@ -12,6 +12,8 @@ namespace Player
         public void RespawnPlayer()
         {
             // TODO things that do need to reset after death will be reset here.
+            // LIST OF WHAT TO RESET: boulder, 
+            // note: add list of spawn points for everything
             playerInteraction.holdBox = false;
 
             this.player.transform.position = this.transform.position;

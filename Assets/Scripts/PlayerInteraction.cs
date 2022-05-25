@@ -30,6 +30,31 @@ public class PlayerInteraction : MonoBehaviour
         switch (otherObject.tag)
         {
             case "Enemy":
+                //TODO enemy will hit player.
+                break;
+            case "Blade":
+                // TODO blade will hit player.
+                break;
+            case "Anvil":
+                // TODO anvil will hit player.
+                break;
+            case "Spike":
+                // TODO spike will hit player.
+                break;
+            case "CrusherTrigger":
+                // TODO door will close behind player and cieling will come closer.
+                break;
+            case "Cieling":
+                // TODO Cieling will hit player.
+                break;
+            case "Boulder":
+                // TODO Boulder will hit player.
+                break;
+            case "BoxPlacement":
+                // TODO player will put box here.
+                break;
+
+            case "HitEnemy":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy] && Input.GetAxis("Use") != 0)
                 {
                     //TODO insert enemy death animation here
@@ -53,6 +78,8 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     otherObject.SetActive(false);
                     // TODO add explosion animation here
+
+                    // TODO add game object that contains the wall behind the box with button
 
                     unlocksHandler.GainedPower.Invoke(UnlocksHandler.EPowers.PickUpBox);
                     // TODO add death UI here.
