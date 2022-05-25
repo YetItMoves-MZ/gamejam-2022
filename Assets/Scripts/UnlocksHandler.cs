@@ -13,7 +13,6 @@ public class UnlocksHandler : MonoBehaviour
         Breath,
         Dash,
         Crawl,
-        OpenDoor,
         AttackEnemy,
         PickUpBox,
         PushButton,
