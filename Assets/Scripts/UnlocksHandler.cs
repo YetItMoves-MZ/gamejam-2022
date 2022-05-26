@@ -21,25 +21,30 @@ public class UnlocksHandler : MonoBehaviour
         EatingCake
     }
 
+    [Header("Debug")]
     [Tooltip("starting with all powers unlocked? (used for testing)")]
     [SerializeField] private bool InitAllPowerActive = false;
 
-    [HideInInspector] public bool[] IsPowerActive;
-
-    // Events that will invoked in other places where a power is gained.
-    [HideInInspector] public UnityEvent<EPowers> GainedPower = new UnityEvent<EPowers>();
-
-
-    [HideInInspector] public float StartBreathingTime = 0;
+    [Header("UI")]
     [Tooltip("insert them in order!")]
     [SerializeField] private Image[] DisabledPowersUI;
     [Tooltip("insert them in order!")]
     [SerializeField] private Image[] EnabledPowersUI;
 
     [Tooltip("The narrator script in the narrator game object")]
+
+    [Header("Narrator")]
     [SerializeField] private Narrator narrator;
     [Tooltip("The list of all messeges the narrator say when the player gain a power. (Have to be in the following order: Movement, Breath, Jump, Crawl, PushButton, Dash, PickUpBox, AttackEnemy, Key, EatingCake)")]
     [SerializeField] private string[] NarratorMesseges;
+
+
+    [HideInInspector] public bool[] IsPowerActive;
+
+    // Events that will invoked in other places where a power is gained.
+    [HideInInspector] public UnityEvent<EPowers> GainedPower = new UnityEvent<EPowers>();
+    [HideInInspector] public float StartBreathingTime = 0;
+
 
     // Start is called before the first frame update
     void Start()

@@ -9,11 +9,14 @@ public class Narrator : MonoBehaviour
     [Header("Timers")]
     [Tooltip("The time all messages will be shown")]
     [SerializeField] private float TimeForEachMessage;
+
+    [Header("UI")]
     [Tooltip("The UI text of the narrator")]
     [SerializeField] private Text text;
     [Tooltip("The UI of the whole text of the narrator (including its background)")]
     [SerializeField] private GameObject textObject;
 
+    [Header("Messeges")]
     [Tooltip("The narrator first message when the game starts")]
     [SerializeField] private string StartingMessege;
 
