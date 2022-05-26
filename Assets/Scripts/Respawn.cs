@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player
 {
@@ -17,6 +18,9 @@ namespace Player
         [SerializeField] private GameObject PlacedBox;
         [SerializeField] private GameObject Enemy;
         [SerializeField] private GameObject Key;
+
+        [Header("Images")]
+        [SerializeField] private Image KeyImage;
 
         [Header("Respawn Locations")]
         [SerializeField] private Transform PlayerSpawner;
@@ -41,6 +45,7 @@ namespace Player
             this.Enemy.SetActive(true);
             this.Key.SetActive(false);
             this.playerBox.SetActive(false);
+            this.KeyImage.enabled = false;
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
 
