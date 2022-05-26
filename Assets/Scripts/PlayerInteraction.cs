@@ -7,63 +7,107 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private UnlocksHandler unlocksHandler;
     [SerializeField] private GameObject Key;
     [SerializeField] private Animator EnemyAnimator;
-    [SerializeField] private float EnemyDeathtime;
+    [SerializeField] private float EnemyDeathTime;
+    [Tooltip("The game object of the box that the player holds")]
     [SerializeField] private GameObject PlayerBox;
+    [Tooltip("The game object of the almost invisible box that indicates where to place the box")]
+    [SerializeField] private GameObject InvisibleBox;
+    [Tooltip("The game object of the box that will be placed by the player")]
+    [SerializeField] private GameObject PlacedBox;
+
+    [Tooltip("The time it takes for the enemy attacking animation to finish")]
+    [SerializeField] private float EnemyAttackTime;
+    [Tooltip("The time it takes from the triggered death to the respawn UI")]
+    [SerializeField] private float PlayerDeathTime;
+    [Tooltip("The time it takes for the box to expload")]
+    [SerializeField] private float BoxExplosionTime;
+    [Tooltip("time it takes the player to die from not breathing")]
+    [SerializeField] private float BreathingTime;
+    [Tooltip("game object that contains the box with button, the boxes near it and the wall behind it.")]
+    [SerializeField] private GameObject BoxWithButtonParent;
 
     // When did the enemy die
-    private float EnemyDiedTime = -5;
+    private float StartEnemyDeathTime;
+    private float StartEnemyAttackTime;
+    private float StartPlayerDeathTime;
+    private float StartBoxExplosionTime;
+    private float StartBreathingTime;
     private GameObject Enemy;
+    private bool IsEnemyDead = false;
+    // TODO use this in third person movement so the player wont move while he dies.
+    public bool IsPlayerDead = false;
+    private bool IsEnemyAttacking = false;
+    private bool IsBoxEploading = false;
 
     [HideInInspector] public bool holdBox = false;
 
-    private void Start()
-    {
-        EnemyDiedTime = -EnemyDeathtime;
-    }
     private void Update()
     {
         HandleEnemyDeath();
+        HandlePlayerDeath();
+        HandleEnemyAttack();
+        HandleBoxExplosion();
+        HandlePlayerBreathing();
     }
     private void OnTriggerStay(Collider other)
     {
         GameObject otherObject = other.gameObject;
         switch (otherObject.tag)
         {
+            // special case of player death, also need to see the enemy attacking animation first.
             case "Enemy":
-                //TODO enemy will hit player.
-                break;
-            case "Blade":
-                // TODO blade will hit player.
-                break;
-            case "Anvil":
-                // TODO anvil will hit player.
-                break;
-            case "Spike":
-                // TODO spike will hit player.
-                break;
-            case "CrusherTrigger":
-                // TODO door will close behind player and cieling will come closer.
-                break;
-            case "Cieling":
-                // TODO Cieling will hit player.
-                break;
-            case "Boulder":
-                // TODO Boulder will hit player.
-                break;
-            case "BoxPlacement":
-                // TODO player will put box here.
+                this.IsEnemyAttacking = true;
+                this.StartEnemyAttackTime = Time.time;
+                // TODO add enemy attacking animation here
                 break;
 
+            case "BoxWithButton":
+                if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
+                {
+                    this.IsBoxEploading = true;
+                    this.StartBoxExplosionTime = Time.time;
+                    // TODO add start explosion animation here
+                }
+                break;
+
+            // all cases that player will die
+            case "Blade":
+                PlayerKilled(UnlocksHandler.EPowers.Crawl);
+                break;
+            case "Anvil":
+                PlayerKilled(UnlocksHandler.EPowers.Movement);
+                break;
+            case "Spike":
+                PlayerKilled(UnlocksHandler.EPowers.Jump);
+                break;
+            case "Cieling":
+                PlayerKilled(UnlocksHandler.EPowers.Crawl);
+                break;
+            case "Boulder":
+                PlayerKilled(UnlocksHandler.EPowers.Dash);
+                break;
+            // cieling is going down
+            case "CrusherTrigger":
+                // TODO add cieling animation here.
+                break;
+            case "BoxPlacement":
+                if (holdBox == true && Input.GetAxis("Use") != 0)
+                {
+                    holdBox = false;
+                    PlayerBox.SetActive(false);
+                    InvisibleBox.SetActive(false);
+                    PlacedBox.SetActive(true);
+                    //TODO add box placement sounds?
+                }
+                break;
             case "HitEnemy":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy] && Input.GetAxis("Use") != 0)
                 {
                     //TODO insert enemy death animation here
 
-                    EnemyDiedTime = Time.time;
+                    StartEnemyDeathTime = Time.time;
                     Enemy = otherObject;
-
-                    otherObject.SetActive(false);
-                    Key.SetActive(true);
+                    IsEnemyDead = true;
                 }
                 break;
             case "Key":
@@ -71,18 +115,6 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     otherObject.SetActive(false);
                     unlocksHandler.GainedPower.Invoke(UnlocksHandler.EPowers.Key);
-                }
-                break;
-            case "BoxWithButton":
-                if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
-                {
-                    otherObject.SetActive(false);
-                    // TODO add explosion animation here
-
-                    // TODO add game object that contains the wall behind the box with button
-
-                    unlocksHandler.GainedPower.Invoke(UnlocksHandler.EPowers.PickUpBox);
-                    // TODO add death UI here.
                 }
                 break;
             case "Box":
@@ -120,10 +152,66 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleEnemyDeath()
     {
-        if (EnemyDiedTime > Time.time - EnemyDeathtime)
+        if (EnemyDeathTime < Time.time - StartEnemyDeathTime && IsEnemyDead)
         {
             Enemy.SetActive(false);
             Key.SetActive(true);
         }
+    }
+    private void HandlePlayerDeath()
+    {
+        if (PlayerDeathTime < Time.time - StartPlayerDeathTime && IsPlayerDead)
+        {
+            // TODO add respawn UI here
+        }
+    }
+
+    private void HandleEnemyAttack()
+    {
+        if (EnemyAttackTime < Time.time - StartEnemyAttackTime && IsEnemyAttacking)
+        {
+            PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
+        }
+
+    }
+
+    private void HandleBoxExplosion()
+    {
+        if (BoxExplosionTime < Time.time - StartBoxExplosionTime && IsBoxEploading)
+        {
+            // TODO end explosion animation here
+            PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
+            this.BoxWithButtonParent.SetActive(false);
+        }
+    }
+
+    private void HandlePlayerBreathing()
+    {
+        if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Breath])
+        {
+            if (BreathingTime < Time.time - StartBreathingTime)
+            {
+                PlayerKilled(UnlocksHandler.EPowers.Breath);
+            }
+        }
+    }
+
+    private void PlayerKilled(UnlocksHandler.EPowers unlockedPower)
+    {
+        this.IsPlayerDead = true;
+        this.StartPlayerDeathTime = Time.time;
+
+        unlocksHandler.GainedPower.Invoke(unlockedPower);
+
+        // TODO add player death animation here
+    }
+
+    // TODO: all of the stats also needs to be reset.
+    public void ResetStats()
+    {
+        IsEnemyDead = false;
+        IsPlayerDead = false;
+
+        holdBox = false;
     }
 }

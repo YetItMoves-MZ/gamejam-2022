@@ -12,9 +12,10 @@ namespace Player
         public void RespawnPlayer()
         {
             // TODO things that do need to reset after death will be reset here.
-            // LIST OF WHAT TO RESET: boulder, 
+            // LIST OF WHAT TO RESET: boulder, cieling beneath boulder, box beanth boulder, both doors, placed box, ork, key
             // note: add list of spawn points for everything
-            playerInteraction.holdBox = false;
+
+            playerInteraction.ResetStats();
 
             this.player.transform.position = this.transform.position;
             Physics.SyncTransforms();

@@ -29,8 +29,7 @@ public class UnlocksHandler : MonoBehaviour
     // Events that will invoked in other places where a power is gained.
     [HideInInspector] public UnityEvent<EPowers> GainedPower = new UnityEvent<EPowers>();
 
-    [Tooltip("time it takes the player to die from not breathing")]
-    [SerializeField] private float BreathingTime;
+
     [HideInInspector] public float StartBreathingTime = 0;
     [Tooltip("insert them in order!")]
     [SerializeField] private Image[] DisabledPowersUI;
@@ -48,20 +47,11 @@ public class UnlocksHandler : MonoBehaviour
         }
 
         GainedPower.AddListener(GainedPowers);
+        StartBreathingTime = Time.time;
     }
 
     void Update()
     {
-        if (!IsPowerActive[(int)EPowers.Breath])
-        {
-            if (BreathingTime > StartBreathingTime - Time.time)
-            {
-                // TODO add death UI here.
-                // TODO add death animation here for player.
-
-                GainedPowers(EPowers.Breath);
-            }
-        }
     }
 
     private void GainedPowers(EPowers power)
