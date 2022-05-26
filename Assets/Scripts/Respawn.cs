@@ -49,6 +49,8 @@ namespace Player
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
 
+            //TODO reset animations
+
             for (int i = 0; i < Doors.Length; i++)
             {
                 this.Doors[i].transform.position = this.DoorsSpawner[i].transform.position;

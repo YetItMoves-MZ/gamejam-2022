@@ -222,7 +222,6 @@ public class PlayerInteraction : MonoBehaviour
         // TODO add player death animation here
     }
 
-    // TODO: all of the stats also needs to be reset.
     public void ResetStats()
     {
         IsEnemyDead = false;

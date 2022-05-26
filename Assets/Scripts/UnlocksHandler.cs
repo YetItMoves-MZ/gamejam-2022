@@ -36,6 +36,11 @@ public class UnlocksHandler : MonoBehaviour
     [Tooltip("insert them in order!")]
     [SerializeField] private Image[] EnabledPowersUI;
 
+    [Tooltip("The narrator script in the narrator game object")]
+    [SerializeField] private Narrator narrator;
+    [Tooltip("The list of all messeges the narrator say when the player gain a power. (Have to be in the following order: Movement, Breath, Jump, Crawl, PushButton, Dash, PickUpBox, AttackEnemy, Key, EatingCake)")]
+    [SerializeField] private string[] NarratorMesseges;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +53,6 @@ public class UnlocksHandler : MonoBehaviour
 
         GainedPower.AddListener(GainedPowers);
         StartBreathingTime = Time.time;
-    }
-
-    void Update()
-    {
     }
 
     private void GainedPowers(EPowers power)
@@ -68,5 +69,6 @@ public class UnlocksHandler : MonoBehaviour
 
         DisabledPowersUI[(int)power - 1].enabled = false;
         EnabledPowersUI[(int)power - 1].enabled = true;
+        narrator.Narrate.Invoke(NarratorMesseges[(int)power - 1]);
     }
 }
