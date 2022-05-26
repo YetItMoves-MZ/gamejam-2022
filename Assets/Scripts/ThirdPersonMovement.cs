@@ -231,9 +231,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
         // rotate to face camera direction
         // if (Input.GetAxisRaw("Camera Unlocked") == 0)
-        // {
-        //     transform.rotation = new Quaternion(0.0f, playerCamera.rotation.y, 0.0f, playerCamera.rotation.w);
-        // }
+        //{
+             transform.rotation = new Quaternion(0.0f, playerCamera.rotation.y, 0.0f, playerCamera.rotation.w);
+        //}
         TargetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;
 
         // move the player

@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25000012
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.25
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.25
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -424,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0.7499999
       objectReference: {fileID: 0}
     - target: {fileID: 2179869233944429480, guid: 74bbfc07a27b232499ab9a1126ee0813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -466,6 +466,14 @@ PrefabInstance:
     - target: {fileID: 1309356755854352381, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
       propertyPath: m_Name
       value: 2x2 Corridor Pit Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005463589098672716, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773288055973277219, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5947551160071600412, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
       propertyPath: m_RootOrder
