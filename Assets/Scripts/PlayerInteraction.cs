@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField] private UnlocksHandler unlocksHandler;
-    [SerializeField] private GameObject Key;
-    [SerializeField] private Animator EnemyAnimator;
-    [SerializeField] private float EnemyDeathTime;
-    [Tooltip("The game object of the box that the player holds")]
-    [SerializeField] private GameObject PlayerBox;
-    [Tooltip("The game object of the almost invisible box that indicates where to place the box")]
-    [SerializeField] private GameObject InvisibleBox;
-    [Tooltip("The game object of the box that will be placed by the player")]
-    [SerializeField] private GameObject PlacedBox;
 
+    [Header("Timers")]
+    [Tooltip("The time it takes for the death animation of the enemy")]
+    [SerializeField] private float EnemyDeathTime;
     [Tooltip("The time it takes for the enemy attacking animation to finish")]
     [SerializeField] private float EnemyAttackTime;
     [Tooltip("The time it takes from the triggered death to the respawn UI")]
@@ -23,8 +16,26 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float BoxExplosionTime;
     [Tooltip("time it takes the player to die from not breathing")]
     [SerializeField] private float BreathingTime;
-    [Tooltip("game object that contains the box with button, the boxes near it and the wall behind it.")]
+
+    [Header("Game Objects")]
+    [Tooltip("The game object of the key")]
+    [SerializeField] private GameObject Key;
+    [Tooltip("The game object of the box that the player holds")]
+    [SerializeField] private GameObject PlayerBox;
+    [Tooltip("The game object of the almost invisible box that indicates where to place the box")]
+    [SerializeField] private GameObject InvisibleBox;
+    [Tooltip("The game object of the box that will be placed by the player")]
+    [SerializeField] private GameObject PlacedBox;
+    [Tooltip("game object that contains the box with button, the boxes near it and the wall behind it")]
     [SerializeField] private GameObject BoxWithButtonParent;
+
+    [Header("Animators")]
+    [Tooltip("Enemy animator")]
+    [SerializeField] private Animator EnemyAnimator;
+
+    [Header("Scripts")]
+    [Tooltip("The unlocks handler script located in unlocks handler game object")]
+    [SerializeField] private UnlocksHandler unlocksHandler;
 
     // When did the enemy die
     private float StartEnemyDeathTime;
@@ -35,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
     private GameObject Enemy;
     private bool IsEnemyDead = false;
     // TODO use this in third person movement so the player wont move while he dies.
-    public bool IsPlayerDead = false;
+    [HideInInspector] public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
 
@@ -48,6 +59,11 @@ public class PlayerInteraction : MonoBehaviour
         HandleEnemyAttack();
         HandleBoxExplosion();
         HandlePlayerBreathing();
+    }
+
+    private void Start()
+    {
+        StartBreathingTime = Time.time;
     }
     private void OnTriggerStay(Collider other)
     {
@@ -211,6 +227,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         IsEnemyDead = false;
         IsPlayerDead = false;
+        IsEnemyAttacking = false;
 
         holdBox = false;
     }
