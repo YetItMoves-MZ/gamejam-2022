@@ -418,19 +418,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9116433
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25000036
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.696811
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -466,10 +466,63 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e178c2d0a2eb1ef49ba9cc413e5406ad, type: 2}
     - target: {fileID: 919132149155446097, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
+--- !u!1 &1571763950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 898130fd742d2a74cb5b4e749ed716d2, type: 3}
+  m_PrefabInstance: {fileID: 1571763949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1571763951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571763950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0785a3d029405243a0795bd84b8d0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  playerCamera: {fileID: 0}
+  heightChange: 0.5
+  dashingModifier: 0
+  IsGrounded: 1
+  GroundedOffset: 0
+  GroundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MovementSpeed: 0
+  SpeedChangeRate: 10
+  JumpHeight: 0
+  JumpTimeout: 0.5
+  FallTimeout: 0.15
+  TerminalVelocity: -53
+  AnimationGroundOffset: -0.8
+  UnlockHandler: {fileID: 0}
+--- !u!143 &1571763952
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571763950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.04
+  m_Radius: 0.01
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0.024}
 --- !u!1 &1760068714
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4142396354263830250, guid: 3f1cad898c5cf9c468196f18122de82b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4142396354263830250, guid: 3f1cad898c5cf9c468196f18122de82b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,7 +676,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2123977718383319130, guid: ec5c3d98ca93a2e4e8adc9dff5c76fb0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2123977718383319130, guid: ec5c3d98ca93a2e4e8adc9dff5c76fb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -866,7 +919,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7528107120837812898, guid: f644a303eb47def4fab09974142be056, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528107120837812898, guid: f644a303eb47def4fab09974142be056, type: 3}
       propertyPath: m_LocalPosition.x
