@@ -67,6 +67,7 @@ namespace Player
             PlayerAnimator.SetBool("isDead", false);
 
             EnemyAnimator.SetBool("isDead", false);
+            this.EnemyAnimator.SetBool("CanAttack", false);
 
             CielingDescend.ResetPlacement();
             openCage.ResetPlacement();

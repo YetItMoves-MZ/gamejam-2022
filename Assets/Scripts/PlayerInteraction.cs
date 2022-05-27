@@ -35,6 +35,8 @@ public class PlayerInteraction : MonoBehaviour
     [Header("UI")]
     [Tooltip("The respawn UI game object")]
     [SerializeField] private GameObject RespawnUI;
+    [Tooltip("The win game UI game object")]
+    [SerializeField] private GameObject WinGameUI;
 
     [Header("Animators")]
     [Tooltip("Enemy animator")]
@@ -88,7 +90,7 @@ public class PlayerInteraction : MonoBehaviour
             case "Enemy":
                 this.IsEnemyAttacking = true;
                 this.StartEnemyAttackTime = Time.time;
-                // TODO add enemy attacking animation here
+                this.EnemyAnimator.SetBool("CanAttack", true);
                 break;
 
             case "BoxWithButton":
@@ -166,7 +168,10 @@ public class PlayerInteraction : MonoBehaviour
             case "Cake":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.EatingCake] && Input.GetAxis("Use") != 0)
                 {
-                    // TODO add win game here.
+                    WinGameUI.SetActive(true);
+
+                    // to prevent player from moving. also he is actualy dead in narative to i guess that checks out :P
+                    IsPlayerDead = true;
 
                 }
                 break;
