@@ -228,12 +228,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void PlayerKilled(UnlocksHandler.EPowers unlockedPower)
     {
+        PlayerAnimator.SetBool("isDead", true);
+
         this.IsPlayerDead = true;
         this.StartPlayerDeathTime = Time.time;
 
         unlocksHandler.GainedPower.Invoke(unlockedPower);
-
-        // TODO add player death animation here
     }
 
     public void ResetStats()
