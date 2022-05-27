@@ -76,6 +76,8 @@ namespace Player
 
             Physics.SyncTransforms();
 
+            Cursor.lockState = CursorLockMode.Locked;
+
         }
     }
 }

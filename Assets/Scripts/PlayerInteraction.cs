@@ -244,6 +244,8 @@ public class PlayerInteraction : MonoBehaviour
             this.IsPlayerDead = true;
 
             unlocksHandler.GainedPower.Invoke(unlockedPower);
+
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
