@@ -25,8 +25,6 @@ namespace Player
         [Header("Respawn Locations")]
         [SerializeField] private Transform PlayerSpawner;
         [SerializeField] private Transform BoulderSpawner;
-        [Tooltip("make sure both doors are in the same order here as the game objects")]
-        [SerializeField] private Transform[] DoorsSpawner;
 
         [Header("Scripts")]
         [Tooltip("Player interaction script that is located in the player game object")]
@@ -74,11 +72,6 @@ namespace Player
             for (int i = 0; i < openDoor.Length; i++)
             {
                 openDoor[i].ResetPlacement();
-            }
-
-            for (int i = 0; i < Doors.Length; i++)
-            {
-                this.Doors[i].transform.position = this.DoorsSpawner[i].transform.position;
             }
 
             Physics.SyncTransforms();
