@@ -47,6 +47,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private UnlocksHandler unlocksHandler;
     [Tooltip("Descend script that is located in (ask bluecat)")]
     [SerializeField] private Descend CielingDescend;
+    [Tooltip("Open door Scripts that are located in (ask blucat)")]
+    [SerializeField] private OpenDoor[] openDoor;
 
     // When did the enemy die
     private float StartEnemyDeathTime;
@@ -154,8 +156,10 @@ public class PlayerInteraction : MonoBehaviour
             case "Door":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
                 {
-                    // TODO insert door animation here.
-
+                    for (int i = 0; i < openDoor.Length; i++)
+                    {
+                        openDoor[i].StartOpenning();
+                    }
                 }
                 break;
             case "Cake":

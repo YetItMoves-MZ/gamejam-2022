@@ -35,12 +35,15 @@ namespace Player
         [SerializeField] private UnlocksHandler unlocksHandler;
         [Tooltip("Descend script that is located in (ask bluecat)")]
         [SerializeField] private Descend CielingDescend;
+        [Tooltip("Open door Scripts that are located in (ask blucat)")]
+        [SerializeField] private OpenDoor[] openDoor;
 
         [Header("Animations")]
         [Tooltip("Player animator")]
         [SerializeField] private Animator PlayerAnimator;
         [Tooltip("Enemy animator")]
         [SerializeField] private Animator EnemyAnimator;
+
 
         public void RespawnPlayer()
         {
@@ -65,6 +68,11 @@ namespace Player
             EnemyAnimator.SetBool("isDead", false);
 
             CielingDescend.ResetPlacement();
+
+            for (int i = 0; i < openDoor.Length; i++)
+            {
+                openDoor[i].ResetPlacement();
+            }
 
             for (int i = 0; i < Doors.Length; i++)
             {
