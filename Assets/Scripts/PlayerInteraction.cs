@@ -112,7 +112,7 @@ public class PlayerInteraction : MonoBehaviour
             case "Spike":
                 PlayerKilled(UnlocksHandler.EPowers.Jump);
                 break;
-            case "Cieling":
+            case "Ceiling":
                 PlayerKilled(UnlocksHandler.EPowers.Crawl);
                 break;
             case "Boulder":
