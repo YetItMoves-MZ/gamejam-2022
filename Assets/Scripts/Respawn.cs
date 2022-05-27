@@ -33,10 +33,12 @@ namespace Player
         [SerializeField] private PlayerInteraction playerInteraction;
         [Tooltip("unlocks handler script that is located in the unlocks handler game object")]
         [SerializeField] private UnlocksHandler unlocksHandler;
-        [Tooltip("Descend script that is located in (ask bluecat)")]
+        [Tooltip("Descend script that is located in Ceiling")]
         [SerializeField] private Descend CielingDescend;
-        [Tooltip("Open door Scripts that are located in (ask blucat)")]
+        [Tooltip("Open door Scripts that are located in Door + Door Crusher")]
         [SerializeField] private OpenDoor[] openDoor;
+        [Tooltip("Open cage Script that is located in Cage Pivot")]
+        [SerializeField] private OpenCage openCage;
 
         [Header("Animations")]
         [Tooltip("Player animator")]
@@ -68,7 +70,7 @@ namespace Player
             EnemyAnimator.SetBool("isDead", false);
 
             CielingDescend.ResetPlacement();
-
+            openCage.ResetPlacement();
             for (int i = 0; i < openDoor.Length; i++)
             {
                 openDoor[i].ResetPlacement();
@@ -80,6 +82,7 @@ namespace Player
             }
 
             Physics.SyncTransforms();
+
         }
     }
 }

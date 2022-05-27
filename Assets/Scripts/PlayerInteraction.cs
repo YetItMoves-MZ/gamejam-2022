@@ -45,10 +45,12 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Scripts")]
     [Tooltip("The unlocks handler script located in unlocks handler game object")]
     [SerializeField] private UnlocksHandler unlocksHandler;
-    [Tooltip("Descend script that is located in (ask bluecat)")]
+    [Tooltip("Descend script that is located in Ceiling")]
     [SerializeField] private Descend CielingDescend;
-    [Tooltip("Open door Scripts that are located in (ask blucat)")]
+    [Tooltip("Open door Scripts that are located in Door + Door Crusher")]
     [SerializeField] private OpenDoor[] openDoor;
+    [Tooltip("Open cage Script that is located in Cage Pivot")]
+    [SerializeField] private OpenCage openCage;
 
     // When did the enemy die
     private float StartEnemyDeathTime;
@@ -172,7 +174,7 @@ public class PlayerInteraction : MonoBehaviour
             case "Cage":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] && Input.GetAxis("Use") != 0)
                 {
-                    // TODO insert cage animation here.
+                    openCage.StartOpenning();
                 }
                 break;
             default:
