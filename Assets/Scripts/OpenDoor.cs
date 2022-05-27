@@ -27,7 +27,6 @@ public class OpenDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this.OriginalLocalPosition.x + MaxMove);
         if (
             IsOpening &&
             transform.localPosition.x < (this.OriginalLocalPosition.x + MaxMove)
