@@ -11,6 +11,7 @@ TagManager:
   - Door
   - Key
   - Cake
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
