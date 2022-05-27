@@ -63,7 +63,6 @@ namespace Player
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
 
-            //TODO reset animations
             PlayerAnimator.SetInteger("Speed", 0);
             PlayerAnimator.SetBool("isDead", false);
 

@@ -127,13 +127,12 @@ public class PlayerInteraction : MonoBehaviour
                     PlayerBox.SetActive(false);
                     InvisibleBox.SetActive(false);
                     PlacedBox.SetActive(true);
-                    //TODO add box placement sounds?
                 }
                 break;
             case "HitEnemy":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy] && Input.GetAxis("Use") != 0)
                 {
-                    //TODO insert enemy death animation here
+                    EnemyAnimator.SetBool("isDead", true);
 
                     StartEnemyDeathTime = Time.time;
                     Enemy = otherObject;
