@@ -31,7 +31,6 @@ public class PlayerInteraction : MonoBehaviour
     [Tooltip("The game object of the explosion animation")]
     [SerializeField] private GameObject Explosion;
 
-
     [Header("UI")]
     [Tooltip("The respawn UI game object")]
     [SerializeField] private GameObject RespawnUI;
@@ -45,8 +44,6 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Scripts")]
     [Tooltip("The unlocks handler script located in unlocks handler game object")]
     [SerializeField] private UnlocksHandler unlocksHandler;
-    [Tooltip("Descend script that is located in (ask bluecat)")]
-    [SerializeField] private Descend CielingDescend;
 
     // When did the enemy die
     private float StartEnemyDeathTime;
@@ -114,7 +111,7 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             // cieling is going down
             case "CrusherTrigger":
-                CielingDescend.StartDesending();
+                // TODO add cieling animation here.
                 break;
             case "BoxPlacement":
                 if (holdBox == true && Input.GetAxis("Use") != 0)

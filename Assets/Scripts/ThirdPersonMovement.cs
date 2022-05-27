@@ -361,6 +361,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    // Eden ref: please annotate this function
     private void HandleCrouchInput()
     {
         if (Input.GetButtonDown("Crouch") && !this.IsCrouching)
