@@ -28,10 +28,18 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject PlacedBox;
     [Tooltip("game object that contains the box with button, the boxes near it and the wall behind it")]
     [SerializeField] private GameObject BoxWithButtonParent;
+    [Tooltip("The game object of the explosion animation")]
+    [SerializeField] private GameObject Explosion;
+
+    [Header("UI")]
+    [Tooltip("The respawn UI game object")]
+    [SerializeField] private GameObject RespawnUI;
 
     [Header("Animators")]
     [Tooltip("Enemy animator")]
     [SerializeField] private Animator EnemyAnimator;
+    [Tooltip("Player animator")]
+    [SerializeField] private Animator PlayerAnimator;
 
     [Header("Scripts")]
     [Tooltip("The unlocks handler script located in unlocks handler game object")]
@@ -45,7 +53,6 @@ public class PlayerInteraction : MonoBehaviour
     private float StartBreathingTime;
     private GameObject Enemy;
     private bool IsEnemyDead = false;
-    // TODO use this in third person movement so the player wont move while he dies.
     [HideInInspector] public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
@@ -82,7 +89,7 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     this.IsBoxEploading = true;
                     this.StartBoxExplosionTime = Time.time;
-                    // TODO add start explosion animation here
+                    Explosion.SetActive(true);
                 }
                 break;
 
@@ -178,7 +185,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (PlayerDeathTime < Time.time - StartPlayerDeathTime && IsPlayerDead)
         {
-            // TODO add respawn UI here
+            RespawnUI.SetActive(true);
         }
     }
 
@@ -195,7 +202,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (BoxExplosionTime < Time.time - StartBoxExplosionTime && IsBoxEploading)
         {
-            // TODO end explosion animation here
+            Explosion.SetActive(false);
             PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
             this.BoxWithButtonParent.SetActive(false);
         }

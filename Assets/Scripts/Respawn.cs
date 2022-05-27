@@ -33,6 +33,12 @@ namespace Player
         [SerializeField] private PlayerInteraction playerInteraction;
         [SerializeField] private UnlocksHandler unlocksHandler;
 
+        [Header("Animations")]
+        [Tooltip("Player animator")]
+        [SerializeField] private Animator PlayerAnimator;
+        [Tooltip("Enemy animator")]
+        [SerializeField] private Animator EnemyAnimator;
+
         public void RespawnPlayer()
         {
             playerInteraction.ResetStats();
@@ -50,6 +56,10 @@ namespace Player
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
 
             //TODO reset animations
+            PlayerAnimator.SetInteger("Speed", 0);
+            PlayerAnimator.SetBool("isDead", false);
+
+            EnemyAnimator.SetBool("isDead", false);
 
             for (int i = 0; i < Doors.Length; i++)
             {

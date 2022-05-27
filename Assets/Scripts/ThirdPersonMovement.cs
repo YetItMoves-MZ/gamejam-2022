@@ -50,9 +50,11 @@ public class ThirdPersonMovement : MonoBehaviour
     [Tooltip("When to start landing animation")]
     [SerializeField] private float AnimationGroundOffset = -0.8f;
 
-    [Header("Powers Variables")]
+    [Header("Scripts")]
     [Tooltip("The UnlockHandler Script located in the UnlockHandler Object")]
     [SerializeField] private UnlocksHandler UnlockHandler;
+    [Tooltip("The PlayerInteraction script located in the player game object")]
+    [SerializeField] private PlayerInteraction playerInteraction;
 
     #endregion
 
@@ -106,9 +108,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool IsCrouching { get; set; }
 
     public bool IsRolling { get; set; }
-
-    public bool IsAlive { get; set; }
-
     public bool IsJumping
     {
         get
@@ -142,7 +141,6 @@ public class ThirdPersonMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.IsAlive = true;
         this.OriginalStepOffset = controller.stepOffset;
         this.PlayerStartHeight = controller.height;
         this.ColliderStartHeight = controller.center.y;
@@ -155,17 +153,17 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.IsAlive)
+        if (!playerInteraction.IsPlayerDead)
         {
-            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Movement])
+            if (UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Movement])
             {
-                this.HandleMovement();  
+                this.HandleMovement();
             }
-            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Crawl])
+            if (UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Crawl])
             {
                 this.HandleCrouchInput();
             }
-            if(UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Jump])
+            if (UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Jump])
             {
                 this.HandleJump();
             }
@@ -173,12 +171,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    
+
     private void HandleMovement()
     {
-        // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = this.IsDashing && UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Dash] ? this.dashingModifier * this.MovementSpeed : this.MovementSpeed;
-
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
         // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -186,6 +181,29 @@ public class ThirdPersonMovement : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
+        // set target speed based on move speed, sprint speed and if sprint is pressed
+        float targetSpeed = 0;
+        if (!this.IsMoving)
+        {
+            targetSpeed = 0.0f;
+            PlayerAnim.SetInteger("Speed", 0);
+        }
+        else
+        {
+            if (this.IsDashing && UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Dash])
+            {
+                targetSpeed = this.dashingModifier * this.MovementSpeed;
+                PlayerAnim.SetInteger("Speed", 6);
+            }
+            else
+            {
+                targetSpeed = this.MovementSpeed;
+                PlayerAnim.SetInteger("Speed", 2);
+            }
+        }
+
+
 
         if (!this.IsMoving) targetSpeed = 0.0f;
 
@@ -232,7 +250,7 @@ public class ThirdPersonMovement : MonoBehaviour
         // rotate to face camera direction
         // if (Input.GetAxisRaw("Camera Unlocked") == 0)
         //{
-             transform.rotation = new Quaternion(0.0f, playerCamera.rotation.y, 0.0f, playerCamera.rotation.w);
+        transform.rotation = new Quaternion(0.0f, playerCamera.rotation.y, 0.0f, playerCamera.rotation.w);
         //}
         TargetDirection = Quaternion.Euler(0.0f, TargetRotation, 0.0f) * Vector3.forward;
 

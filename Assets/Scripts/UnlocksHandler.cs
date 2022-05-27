@@ -62,6 +62,7 @@ public class UnlocksHandler : MonoBehaviour
 
     private void GainedPowers(EPowers power)
     {
+        Debug.Log("New power get! " + power);
         // In case that no power was given and yet the function was called.
         if (power == EPowers.Default)
         {
