@@ -12,10 +12,10 @@ public class UnlocksHandler : MonoBehaviour
         Movement,
         Breath,
         Jump,
-        Crawl,
         PushButton,
-        Dash,
+        Crawl,
         PickUpBox,
+        Dash,
         AttackEnemy,
         Key,
         EatingCake
