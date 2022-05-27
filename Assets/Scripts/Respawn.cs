@@ -26,6 +26,9 @@ namespace Player
         [SerializeField] private Transform PlayerSpawner;
         [SerializeField] private Transform BoulderSpawner;
 
+        [Header("UI")]
+        [SerializeField] private GameObject RespawnUI;
+
         [Header("Scripts")]
         [Tooltip("Player interaction script that is located in the player game object")]
         [SerializeField] private PlayerInteraction playerInteraction;
@@ -75,6 +78,8 @@ namespace Player
             }
 
             Physics.SyncTransforms();
+
+            RespawnUI.SetActive(false);
 
             Cursor.lockState = CursorLockMode.Locked;
 
