@@ -5,8 +5,7 @@ using UnityEngine;
 public class Spin : MonoBehaviour
 {
     [SerializeField] private Vector3 rotateVector;
-    [SerializeField] private float degreesPerSecond = 15.0f;
-    [SerializeField] private float amplitude = 20f;
+    [SerializeField] private float degreesPerSecond = 15.0f;;
     [SerializeField] private float frequency = 0.1f;
 
     // Position Storage Variables
