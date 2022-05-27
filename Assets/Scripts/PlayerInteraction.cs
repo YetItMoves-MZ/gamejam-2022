@@ -216,7 +216,7 @@ public class PlayerInteraction : MonoBehaviour
         if (BoxExplosionTime < Time.time - StartBoxExplosionTime && IsBoxEploading)
         {
             Explosion.SetActive(false);
-            PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
+            PlayerKilled(UnlocksHandler.EPowers.PickUpBox);
             this.BoxWithButtonParent.SetActive(false);
         }
     }
