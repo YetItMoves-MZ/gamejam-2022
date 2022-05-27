@@ -113,7 +113,7 @@ public class PlayerInteraction : MonoBehaviour
                 PlayerKilled(UnlocksHandler.EPowers.Jump);
                 break;
             case "Ceiling":
-                PlayerKilled(UnlocksHandler.EPowers.Crawl);
+                PlayerKilled(UnlocksHandler.EPowers.PushButton);
                 break;
             case "Boulder":
                 PlayerKilled(UnlocksHandler.EPowers.Dash);
