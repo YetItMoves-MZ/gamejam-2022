@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8975819502869073048}
   - component: {fileID: 8696645441497188077}
   - component: {fileID: 8101915503431024100}
+  - component: {fileID: 8302501755507784647}
   m_Layer: 0
   m_Name: Blade
-  m_TagString: Untagged
+  m_TagString: Blade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,8 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateVector: {x: 0, y: 0, z: 0}
   degreesPerSecond: 500
-  amplitude: 7261.5
   frequency: 0.1
+--- !u!65 &8302501755507784647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348432607558181374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 6.3831944, z: 2}
+  m_Center: {x: 0.0000019073486, y: 0, z: -0.00000023841858}
 --- !u!1 &7529898076807500157
 GameObject:
   m_ObjectHideFlags: 0

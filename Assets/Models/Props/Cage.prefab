@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 1909754610347086793}
   - component: {fileID: 3255843210729626732}
   - component: {fileID: 777965428847208614}
+  - component: {fileID: 823329811949833296}
+  - component: {fileID: 3913471116122772773}
   m_Layer: 0
   m_Name: Cage
-  m_TagString: Untagged
+  m_TagString: Cage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &823329811949833296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282152740131654003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9734901, y: 12.568409, z: 1.9719572}
+  m_Center: {x: 0, y: 5.2842045, z: 0.000003814697}
+--- !u!65 &3913471116122772773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282152740131654003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9734901, y: 12.568409, z: 2.952011}
+  m_Center: {x: 0.000000014792381, y: 5.2842045, z: 0.4900321}
 --- !u!1 &3651306973768018826
 GameObject:
   m_ObjectHideFlags: 0
