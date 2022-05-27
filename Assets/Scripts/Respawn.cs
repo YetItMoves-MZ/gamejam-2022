@@ -31,7 +31,10 @@ namespace Player
         [Header("Scripts")]
         [Tooltip("Player interaction script that is located in the player game object")]
         [SerializeField] private PlayerInteraction playerInteraction;
+        [Tooltip("unlocks handler script that is located in the unlocks handler game object")]
         [SerializeField] private UnlocksHandler unlocksHandler;
+        [Tooltip("Descend script that is located in (ask bluecat)")]
+        [SerializeField] private Descend CielingDescend;
 
         [Header("Animations")]
         [Tooltip("Player animator")]
@@ -60,6 +63,8 @@ namespace Player
             PlayerAnimator.SetBool("isDead", false);
 
             EnemyAnimator.SetBool("isDead", false);
+
+            CielingDescend.ResetPlacement();
 
             for (int i = 0; i < Doors.Length; i++)
             {
