@@ -65,6 +65,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
+    [HideInInspector] public bool killedOnlyOnce = false;
 
     [HideInInspector] public bool holdBox = false;
 
@@ -234,12 +235,16 @@ public class PlayerInteraction : MonoBehaviour
 
     private void PlayerKilled(UnlocksHandler.EPowers unlockedPower)
     {
-        PlayerAnimator.SetBool("isDead", true);
+        if (!killedOnlyOnce)
+        {
+            killedOnlyOnce = true;
+            PlayerAnimator.SetBool("isDead", true);
 
-        this.StartPlayerDeathTime = Time.time;
-        this.IsPlayerDead = true;
+            this.StartPlayerDeathTime = Time.time;
+            this.IsPlayerDead = true;
 
-        unlocksHandler.GainedPower.Invoke(unlockedPower);
+            unlocksHandler.GainedPower.Invoke(unlockedPower);
+        }
     }
 
     public void ResetStats()
@@ -249,5 +254,6 @@ public class PlayerInteraction : MonoBehaviour
         IsEnemyAttacking = false;
 
         holdBox = false;
+        killedOnlyOnce = false;
     }
 }
