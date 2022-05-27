@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2669497248330869679}
-  m_LocalRotation: {x: -0, y: 0.86602575, z: -0, w: -0.4999994}
-  m_LocalPosition: {x: -0.091505885, y: 1.5, z: -0.34150648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: 1.5, z: -0.34150648}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4931175778649618270}
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4931175778649618270}
   - component: {fileID: 4931175778649618271}
   - component: {fileID: 4931175778649618264}
+  - component: {fileID: 3932749882482803691}
   - component: {fileID: 4931175778649618269}
   m_Layer: 0
   m_Name: Player
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4931175778649618265}
-  m_LocalRotation: {x: -0, y: -0.86602575, z: -0, w: -0.4999994}
+  m_LocalRotation: {x: -0, y: -0.8660254, z: 0, w: -0.50000006}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -105,7 +106,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   MovementSpeed: 5
   SpeedChangeRate: 10
   JumpHeight: 2
@@ -114,6 +115,39 @@ MonoBehaviour:
   TerminalVelocity: -53
   AnimationGroundOffset: -0.8
   UnlockHandler: {fileID: 0}
+  playerInteraction: {fileID: 3932749882482803691}
+--- !u!114 &3932749882482803691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931175778649618265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d2c3d1716da30449bc7a297e1c0e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyDeathTime: 0
+  EnemyAttackTime: 0
+  PlayerDeathTime: 0
+  BoxExplosionTime: 0
+  BreathingTime: 0
+  Key: {fileID: 0}
+  PlayerBox: {fileID: 0}
+  InvisibleBox: {fileID: 0}
+  PlacedBox: {fileID: 0}
+  BoxWithButtonParent: {fileID: 0}
+  Explosion: {fileID: 0}
+  RespawnUI: {fileID: 0}
+  EnemyAnimator: {fileID: 0}
+  PlayerAnimator: {fileID: 0}
+  unlocksHandler: {fileID: 0}
+  CielingDescend: {fileID: 0}
+  openDoor: []
+  openCage: {fileID: 0}
+  IsPlayerDead: 0
+  holdBox: 0
 --- !u!136 &4931175778649618269
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,19 +187,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c4a7826da493cb4c8bbaf47816f1004, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.50000054
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c4a7826da493cb4c8bbaf47816f1004, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c4a7826da493cb4c8bbaf47816f1004, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8660251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c4a7826da493cb4c8bbaf47816f1004, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7c4a7826da493cb4c8bbaf47816f1004, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

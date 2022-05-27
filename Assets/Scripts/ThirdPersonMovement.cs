@@ -187,19 +187,19 @@ public class ThirdPersonMovement : MonoBehaviour
         if (!this.IsMoving)
         {
             targetSpeed = 0.0f;
-            PlayerAnim.SetInteger("Speed", 0);
+            PlayerAnim.SetFloat("Speed", 0);
         }
         else
         {
             if (this.IsDashing && UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Dash])
             {
                 targetSpeed = this.dashingModifier * this.MovementSpeed;
-                PlayerAnim.SetInteger("Speed", 6);
+                PlayerAnim.SetFloat("Speed", 6);
             }
             else
             {
                 targetSpeed = this.MovementSpeed;
-                PlayerAnim.SetInteger("Speed", 2);
+                PlayerAnim.SetFloat("Speed", 2);
             }
         }
 
