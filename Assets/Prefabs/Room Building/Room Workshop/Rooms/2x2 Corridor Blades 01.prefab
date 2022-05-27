@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 807474938912063692, guid: b99c4f5b442676442a23b5ca3eaf8ce6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 807474938912063692, guid: b99c4f5b442676442a23b5ca3eaf8ce6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 807474938912063692, guid: b99c4f5b442676442a23b5ca3eaf8ce6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.25
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 807474938912063692, guid: b99c4f5b442676442a23b5ca3eaf8ce6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -140,6 +140,14 @@ PrefabInstance:
     - target: {fileID: 1309356755854352381, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
       propertyPath: m_Name
       value: 2x2 Corridor Blades 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005463589098672716, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773288055973277219, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5947551160071600412, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
       propertyPath: m_RootOrder

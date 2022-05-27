@@ -102,6 +102,50 @@ Transform:
   m_Father: {fileID: 8121098453556439005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6750919373586958030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3307506603117090443}
+  - component: {fileID: 4869132088954600882}
+  m_Layer: 0
+  m_Name: Crush Trigger
+  m_TagString: CrusherTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3307506603117090443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750919373586958030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5329083820466707296}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4869132088954600882
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750919373586958030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.55842924, y: 3.7583256, z: 4.9431124}
+  m_Center: {x: 0.22078538, y: 1.3791628, z: -0.45222616}
 --- !u!1 &8846972852671122356
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling
       objectReference: {fileID: 0}
+    - target: {fileID: 2103833171747605753, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
+      propertyPath: m_TagString
+      value: Ceiling
+      objectReference: {fileID: 0}
     - target: {fileID: 3773288055973277219, guid: eb2b6c157a0e72447a3ee296bf9da67d, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -537,6 +585,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDesending: 0
+--- !u!65 &2783766178759901875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454607218416266885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 2, z: 6.0000005}
+  m_Center: {x: -1.5, y: 0.5, z: -2.4999998}
 --- !u!1001 &2064297419234413210
 PrefabInstance:
   m_ObjectHideFlags: 0

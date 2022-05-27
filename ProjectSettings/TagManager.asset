@@ -12,6 +12,14 @@ TagManager:
   - Key
   - Cake
   - Ground
+  - Cage
+  - Blade
+  - HitEnemy
+  - Spike
+  - Ceiling
+  - Boulder
+  - CrusherTrigger
+  - BoxPlacement
   layers:
   - Default
   - TransparentFX

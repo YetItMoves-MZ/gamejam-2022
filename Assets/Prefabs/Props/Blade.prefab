@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8696645441497188077}
   - component: {fileID: 8101915503431024100}
   - component: {fileID: 8302501755507784647}
+  - component: {fileID: 2830410419360046833}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Blade
@@ -112,6 +113,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 6.3831944, z: 2}
   m_Center: {x: 0.0000019073486, y: 0, z: -0.00000023841858}
+--- !u!65 &2830410419360046833
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348432607558181374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3323495, y: 6.3831944, z: 2.296976}
+  m_Center: {x: 0.032559372, y: 0, z: 0.013981926}
 --- !u!1 &7529898076807500157
 GameObject:
   m_ObjectHideFlags: 0
