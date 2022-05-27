@@ -62,7 +62,7 @@ public class PlayerInteraction : MonoBehaviour
     private float StartBreathingTime;
     private GameObject Enemy;
     private bool IsEnemyDead = false;
-    [HideInInspector] public bool IsPlayerDead = false;
+    public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
 
@@ -236,8 +236,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         PlayerAnimator.SetBool("isDead", true);
 
-        this.IsPlayerDead = true;
         this.StartPlayerDeathTime = Time.time;
+        this.IsPlayerDead = true;
 
         unlocksHandler.GainedPower.Invoke(unlockedPower);
     }
