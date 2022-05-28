@@ -78,6 +78,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
     private bool IsWallAppeared = false;
+    private bool AllreadyAttacked = false;
     // dont know why the player dies twice to spikes so i hard coded it for now
     [HideInInspector] public bool killedOnlyOnce = false;
 
@@ -238,8 +239,9 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleEnemyAttack()
     {
-        if (EnemyAttackTime < Time.time - StartEnemyAttackTime && IsEnemyAttacking)
+        if (EnemyAttackTime < Time.time - StartEnemyAttackTime && IsEnemyAttacking && !AllreadyAttacked)
         {
+            AllreadyAttacked = true;
             PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
         }
 
@@ -290,6 +292,7 @@ public class PlayerInteraction : MonoBehaviour
         IsEnemyDead = false;
         IsEnemyAttacking = false;
         IsWallAppeared = false;
+        AllreadyAttacked = false;
 
         holdBox = false;
 
