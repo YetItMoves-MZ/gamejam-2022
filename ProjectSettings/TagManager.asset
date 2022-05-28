@@ -21,6 +21,7 @@ TagManager:
   - CrusherTrigger
   - BoxPlacement
   - SpawnArea
+  - ResetEnemyAttack
   layers:
   - Default
   - TransparentFX
