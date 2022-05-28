@@ -34,6 +34,9 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject WallBehindCrusher;
     [Tooltip("The game object of the cieling beneath the boulder")]
     [SerializeField] private GameObject CielingBeneathBoulder;
+    [Tooltip("The game object of the Ork")]
+    [SerializeField] private GameObject Enemy;
+
 
 
 
@@ -72,7 +75,6 @@ public class PlayerInteraction : MonoBehaviour
     private float StartPlayerDeathTime;
     private float StartBoxExplosionTime;
     private float StartBreathingTime;
-    private GameObject Enemy;
     private bool IsEnemyDead = false;
     public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
@@ -171,7 +173,6 @@ public class PlayerInteraction : MonoBehaviour
                     EnemyAnimator.SetBool("isDead", true);
 
                     StartEnemyDeathTime = Time.time;
-                    Enemy = otherObject;
                     IsEnemyDead = true;
                 }
                 break;
