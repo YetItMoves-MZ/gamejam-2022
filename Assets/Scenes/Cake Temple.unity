@@ -963,6 +963,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1956675309}
     - target: {fileID: -215704079107134972, guid: 5a8efd7ee464f174f89fa682da5bb0c3, type: 3}
+      propertyPath: WallBehindCrusher
+      value: 
+      objectReference: {fileID: 1344600089}
+    - target: {fileID: -215704079107134972, guid: 5a8efd7ee464f174f89fa682da5bb0c3, type: 3}
       propertyPath: playerInteraction
       value: 
       objectReference: {fileID: 1978367283}
@@ -1312,9 +1316,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 847737380}
+  - component: {fileID: 847737381}
   m_Layer: 0
   m_Name: Player Spawner
-  m_TagString: Untagged
+  m_TagString: SpawnArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,12 +1332,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847737379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11, y: 0, z: 6.25}
+  m_LocalPosition: {x: 12, y: 0.25, z: 8.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &847737381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847737379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1656847, y: 2.405455, z: 1.5583954}
+  m_Center: {x: -0.08284235, y: 0.7027273, z: -0.2791977}
 --- !u!1 &905657419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4953570231490753823, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
@@ -1667,11 +1685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2018522482932395901, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9169566
+      value: 0.91695654
       objectReference: {fileID: 0}
     - target: {fileID: 2018522482932395901, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.112882525
+      value: -0.11288251
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
@@ -2302,7 +2320,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 614e0bbfa9e0c594fb211d08193b87f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.497
+  m_Volume: 0.259
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3794,7 +3812,7 @@ PrefabInstance:
       objectReference: {fileID: 590347656}
     - target: {fileID: 3932749882482803691, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
       propertyPath: BreathingTime
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3932749882482803691, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
       propertyPath: EnemyAnimator
