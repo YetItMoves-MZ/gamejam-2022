@@ -271,7 +271,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void PlayerKilled(UnlocksHandler.EPowers unlockedPower)
     {
-        if (!killedOnlyOnce)
+        if (!killedOnlyOnce && (!(unlockedPower == UnlocksHandler.EPowers.AttackEnemy)) || (unlockedPower == UnlocksHandler.EPowers.AttackEnemy && !unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy]))
         {
             killedOnlyOnce = true;
 
