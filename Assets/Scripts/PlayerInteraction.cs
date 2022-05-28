@@ -163,10 +163,7 @@ public class PlayerInteraction : MonoBehaviour
             case "Door":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
                 {
-                    for (int i = 0; i < openDoor.Length; i++)
-                    {
-                        openDoor[i].StartOpenning();
-                    }
+                    otherObject.GetComponent<OpenDoor>().StartOpenning();
                 }
                 break;
             case "Cake":
