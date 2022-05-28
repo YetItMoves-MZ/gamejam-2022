@@ -91,7 +91,7 @@ public class PlayerInteraction : MonoBehaviour
             case "Enemy":
                 this.IsEnemyAttacking = true;
                 this.StartEnemyAttackTime = Time.time;
-                this.EnemyAnimator.SetBool("CanAttack", true);
+                this.EnemyAnimator.SetBool("canAttack", true);
                 break;
 
             case "BoxWithButton":
