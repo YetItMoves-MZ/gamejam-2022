@@ -54,6 +54,11 @@ public class UnlocksHandler : MonoBehaviour
         for (int i = 0; i < (int)EPowers.EatingCake + 1; i++)
         {
             IsPowerActive[i] = InitAllPowerActive;
+            if (i != 0)
+            {
+                EnabledPowersUI[i - 1].enabled = false;
+            }
+
         }
 
         GainedPower.AddListener(GainedPowers);
