@@ -65,6 +65,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
+    private bool KilledOnlyOnceByAnvil = false;
     [HideInInspector] public bool killedOnlyOnce = false;
 
     [HideInInspector] public bool holdBox = false;
@@ -108,7 +109,9 @@ public class PlayerInteraction : MonoBehaviour
                 PlayerKilled(UnlocksHandler.EPowers.Crawl);
                 break;
             case "Anvil":
+                other.enabled = false;
                 PlayerKilled(UnlocksHandler.EPowers.Movement);
+
                 break;
             case "Spike":
                 PlayerKilled(UnlocksHandler.EPowers.Jump);
