@@ -32,6 +32,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject Explosion;
     [Tooltip("The game object of the wall behind the ceiling crusher")]
     [SerializeField] private GameObject WallBehindCrusher;
+    [Tooltip("The game object of the cieling beneath the boulder")]
+    [SerializeField] private GameObject CielingBeneathBoulder;
 
 
     [Header("UI")]
@@ -161,8 +163,10 @@ public class PlayerInteraction : MonoBehaviour
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PickUpBox] && Input.GetAxis("Use") != 0)
                 {
                     PlayerBox.SetActive(true);
+                    // BUG fix animations for box here
                     otherObject.SetActive(false);
                     holdBox = true;
+                    CielingBeneathBoulder.SetActive(false);
                 }
                 break;
             case "Door":

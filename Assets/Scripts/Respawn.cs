@@ -67,6 +67,8 @@ namespace Player
             PlayerAnimator.SetFloat("Speed", 0);
             PlayerAnimator.SetBool("isDead", false);
 
+            // BUG revert box animations here
+
             EnemyAnimator.SetBool("isDead", false);
             this.EnemyAnimator.SetBool("canAttack", false);
 
