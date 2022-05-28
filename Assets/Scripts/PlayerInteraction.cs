@@ -34,7 +34,6 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject WallBehindCrusher;
 
 
-
     [Header("UI")]
     [Tooltip("The respawn UI game object")]
     [SerializeField] private GameObject RespawnUI;
@@ -85,15 +84,7 @@ public class PlayerInteraction : MonoBehaviour
         HandleBoxExplosion();
         HandlePlayerBreathing();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        switch (other.gameObject.tag)
-        {
-            case "SpawnArea":
-                killedOnlyOnce = true;
-                break;
-        }
-    }
+
     private void OnTriggerStay(Collider other)
     {
         GameObject otherObject = other.gameObject;
@@ -136,6 +127,9 @@ public class PlayerInteraction : MonoBehaviour
             case "CrusherTrigger":
                 CielingDescend.StartDesending();
                 WallBehindCrusher.SetActive(true);
+                break;
+            case "SpawnArea":
+                killedOnlyOnce = false;
                 break;
             case "BoxPlacement":
                 if (holdBox == true && Input.GetAxis("Use") != 0)
@@ -249,6 +243,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!killedOnlyOnce)
         {
+            killedOnlyOnce = true;
+
             PlayerAnimator.SetBool("isDead", true);
 
             this.StartPlayerDeathTime = Time.time;
@@ -262,12 +258,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public void ResetStats()
     {
-        IsEnemyDead = false;
         IsPlayerDead = false;
+        IsEnemyDead = false;
         IsEnemyAttacking = false;
 
         holdBox = false;
-        killedOnlyOnce = false;
 
         StartBreathingTime = Time.time;
 
