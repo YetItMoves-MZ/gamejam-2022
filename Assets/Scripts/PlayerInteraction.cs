@@ -30,6 +30,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject BoxWithButtonParent;
     [Tooltip("The game object of the explosion animation")]
     [SerializeField] private GameObject Explosion;
+    [Tooltip("The game object of the wall behind the ceiling crusher")]
+    [SerializeField] private GameObject WallBehindCrusher;
 
 
     [Header("UI")]
@@ -65,7 +67,8 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
-    private bool KilledOnlyOnceByAnvil = false;
+    // dont know why the player dies twice to spikes so i hard coded it for now
+    private bool KilledOnlyOnceBySpike = false;
     [HideInInspector] public bool killedOnlyOnce = false;
 
     [HideInInspector] public bool holdBox = false;
@@ -111,10 +114,13 @@ public class PlayerInteraction : MonoBehaviour
             case "Anvil":
                 other.enabled = false;
                 PlayerKilled(UnlocksHandler.EPowers.Movement);
-
                 break;
             case "Spike":
-                PlayerKilled(UnlocksHandler.EPowers.Jump);
+                if (!KilledOnlyOnceBySpike)
+                {
+                    KilledOnlyOnceBySpike = true;
+                    PlayerKilled(UnlocksHandler.EPowers.Jump);
+                }
                 break;
             case "Ceiling":
                 PlayerKilled(UnlocksHandler.EPowers.PushButton);
@@ -125,6 +131,7 @@ public class PlayerInteraction : MonoBehaviour
             // cieling is going down
             case "CrusherTrigger":
                 CielingDescend.StartDesending();
+                WallBehindCrusher.SetActive(true);
                 break;
             case "BoxPlacement":
                 if (holdBox == true && Input.GetAxis("Use") != 0)
@@ -260,5 +267,7 @@ public class PlayerInteraction : MonoBehaviour
         killedOnlyOnce = false;
 
         StartBreathingTime = Time.time;
+
+        KilledOnlyOnceBySpike = false;
     }
 }

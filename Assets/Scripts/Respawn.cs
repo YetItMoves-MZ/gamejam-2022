@@ -50,8 +50,6 @@ namespace Player
 
         public void RespawnPlayer()
         {
-            playerInteraction.ResetStats();
-
             this.player.transform.position = PlayerSpawner.transform.position;
             this.Boulder.transform.position = BoulderSpawner.transform.position;
             this.CielingBeneathBoulder.SetActive(true);
@@ -80,6 +78,8 @@ namespace Player
             Physics.SyncTransforms();
 
             RespawnUI.SetActive(false);
+
+            playerInteraction.ResetStats();
 
             Cursor.lockState = CursorLockMode.Locked;
 
