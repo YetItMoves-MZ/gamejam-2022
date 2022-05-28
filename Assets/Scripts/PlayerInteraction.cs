@@ -169,6 +169,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
                 {
                     otherObject.GetComponent<OpenDoor>().StartOpenning();
+                    this.WallBehindCrusher.SetActive(false);
                 }
                 break;
             case "Cake":
