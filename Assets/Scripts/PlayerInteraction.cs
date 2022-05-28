@@ -77,6 +77,7 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsPlayerDead = false;
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
+    private bool IsWallAppeared = false;
     // dont know why the player dies twice to spikes so i hard coded it for now
     [HideInInspector] public bool killedOnlyOnce = false;
 
@@ -137,8 +138,12 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             // cieling is going down
             case "CrusherTrigger":
-                CielingDescend.StartDesending();
-                WallBehindCrusher.SetActive(true);
+                if (!IsWallAppeared)
+                {
+                    IsWallAppeared = true;
+                    CielingDescend.StartDesending();
+                    WallBehindCrusher.SetActive(true);
+                }
                 break;
             case "SpawnArea":
                 killedOnlyOnce = false;
@@ -282,11 +287,11 @@ public class PlayerInteraction : MonoBehaviour
         IsPlayerDead = false;
         IsEnemyDead = false;
         IsEnemyAttacking = false;
+        IsWallAppeared = false;
 
         holdBox = false;
 
         StartBreathingTime = Time.time;
-
         Destroy(InstantiatedBoulder);
 
     }
