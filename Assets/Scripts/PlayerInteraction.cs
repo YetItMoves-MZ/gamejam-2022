@@ -106,12 +106,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             // special case of player death, also need to see the enemy attacking animation first.
             case "Enemy":
-                if (!IsEnemyAttacking)
+                if (AllreadyAttacked)
                 {
-                    this.IsEnemyAttacking = true;
                     this.StartEnemyAttackTime = Time.time;
-                    this.EnemyAnimator.SetBool("canAttack", true);
                 }
+                IsEnemyAttacking = true;
+                this.EnemyAnimator.SetBool("canAttack", true);
                 break;
             case "BoxWithButton":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
@@ -124,6 +124,7 @@ public class PlayerInteraction : MonoBehaviour
 
             case "ResetEnemyAttack":
                 IsEnemyAttacking = false;
+                AllreadyAttacked = false;
                 break;
 
             // all cases that player will die
@@ -208,10 +209,8 @@ public class PlayerInteraction : MonoBehaviour
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.EatingCake] && Input.GetAxis("Use") != 0)
                 {
                     WinGameUI.SetActive(true);
-
                     // to prevent player from moving. also he is actualy dead in narative to i guess that checks out :P
                     IsPlayerDead = true;
-
                 }
                 break;
             case "Cage":
@@ -243,7 +242,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleEnemyAttack()
     {
-        if (EnemyAttackTime < Time.time - StartEnemyAttackTime && IsEnemyAttacking && !AllreadyAttacked)
+        if (EnemyAttackTime < Time.time - StartEnemyAttackTime && !AllreadyAttacked && IsEnemyAttacking)
         {
             AllreadyAttacked = true;
             PlayerKilled(UnlocksHandler.EPowers.AttackEnemy);
@@ -295,7 +294,6 @@ public class PlayerInteraction : MonoBehaviour
         IsPlayerDead = false;
         IsEnemyDead = false;
         IsWallAppeared = false;
-        AllreadyAttacked = false;
 
         holdBox = false;
 

@@ -71,7 +71,7 @@ namespace Player
 
             // BUG revert box animations here
 
-            EnemyAnimator.SetBool("isDead", false);
+            this.EnemyAnimator.SetBool("isDead", false);
             this.EnemyAnimator.SetBool("canAttack", false);
 
             CielingDescend.ResetPlacement();
