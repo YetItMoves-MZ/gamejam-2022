@@ -224,7 +224,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandlePlayerBreathing()
     {
-        if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Breath])
+        if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Breath] && unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Movement])
         {
             if (BreathingTime < Time.time - StartBreathingTime)
             {
@@ -257,5 +257,7 @@ public class PlayerInteraction : MonoBehaviour
 
         holdBox = false;
         killedOnlyOnce = false;
+
+        StartBreathingTime = Time.time;
     }
 }
