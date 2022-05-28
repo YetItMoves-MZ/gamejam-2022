@@ -105,11 +105,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             // special case of player death, also need to see the enemy attacking animation first.
             case "Enemy":
-                this.IsEnemyAttacking = true;
-                this.StartEnemyAttackTime = Time.time;
-                this.EnemyAnimator.SetBool("canAttack", true);
+                if (!IsEnemyAttacking)
+                {
+                    this.IsEnemyAttacking = true;
+                    this.StartEnemyAttackTime = Time.time;
+                    this.EnemyAnimator.SetBool("canAttack", true);
+                }
                 break;
-
             case "BoxWithButton":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
                 {
