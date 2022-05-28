@@ -62,11 +62,11 @@ namespace Player
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
 
-            PlayerAnimator.SetInteger("Speed", 0);
+            PlayerAnimator.SetFloat("Speed", 0);
             PlayerAnimator.SetBool("isDead", false);
 
             EnemyAnimator.SetBool("isDead", false);
-            this.EnemyAnimator.SetBool("CanAttack", false);
+            this.EnemyAnimator.SetBool("canAttack", false);
 
             CielingDescend.ResetPlacement();
             openCage.ResetPlacement();
