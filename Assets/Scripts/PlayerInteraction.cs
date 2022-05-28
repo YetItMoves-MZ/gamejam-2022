@@ -207,11 +207,10 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 break;
             case "Cake":
-                if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.EatingCake] && Input.GetAxis("Use") != 0)
+                if (Input.GetAxis("Use") != 0)
                 {
                     WinGameUI.SetActive(true);
-                    // to prevent player from moving. also he is actualy dead in narative to i guess that checks out :P
-                    IsPlayerDead = true;
+                    PlayerKilled(UnlocksHandler.EPowers.EatingCake);
                 }
                 break;
             case "Cage":
