@@ -163,10 +163,9 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 this.HandleCrouchInput();
             }
-            if (UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Jump])
-            {
-                this.HandleJump();
-            }
+
+            this.HandleJump();
+
             this.GroundedCheck();
         }
     }
@@ -310,8 +309,9 @@ public class ThirdPersonMovement : MonoBehaviour
                 VerticalVelocity = -2f;
             }
 
-            // Jump
-            if (IsJumping && JumpTimeoutDelta <= 0.0f)
+            // Jump        
+
+            if (IsJumping && JumpTimeoutDelta <= 0.0f && UnlockHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Jump])
             {
                 // the square root of H * -2 * G = how much velocity needed to reach desired height
                 VerticalVelocity = Mathf.Sqrt(this.JumpHeight * -2f * Physics.gravity.y);
