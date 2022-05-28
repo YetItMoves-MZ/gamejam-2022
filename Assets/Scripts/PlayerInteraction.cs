@@ -34,6 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject WallBehindCrusher;
 
 
+
     [Header("UI")]
     [Tooltip("The respawn UI game object")]
     [SerializeField] private GameObject RespawnUI;
@@ -68,11 +69,14 @@ public class PlayerInteraction : MonoBehaviour
     private bool IsEnemyAttacking = false;
     private bool IsBoxEploading = false;
     // dont know why the player dies twice to spikes so i hard coded it for now
-    private bool KilledOnlyOnceBySpike = false;
     [HideInInspector] public bool killedOnlyOnce = false;
 
     [HideInInspector] public bool holdBox = false;
 
+    private void Start()
+    {
+        StartBreathingTime = Time.time;
+    }
     private void Update()
     {
         HandleEnemyDeath();
@@ -81,10 +85,14 @@ public class PlayerInteraction : MonoBehaviour
         HandleBoxExplosion();
         HandlePlayerBreathing();
     }
-
-    private void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        StartBreathingTime = Time.time;
+        switch (other.gameObject.tag)
+        {
+            case "SpawnArea":
+                killedOnlyOnce = true;
+                break;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -116,11 +124,7 @@ public class PlayerInteraction : MonoBehaviour
                 PlayerKilled(UnlocksHandler.EPowers.Movement);
                 break;
             case "Spike":
-                if (!KilledOnlyOnceBySpike)
-                {
-                    KilledOnlyOnceBySpike = true;
-                    PlayerKilled(UnlocksHandler.EPowers.Jump);
-                }
+                PlayerKilled(UnlocksHandler.EPowers.Jump);
                 break;
             case "Ceiling":
                 PlayerKilled(UnlocksHandler.EPowers.PushButton);
@@ -245,7 +249,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!killedOnlyOnce)
         {
-            killedOnlyOnce = true;
             PlayerAnimator.SetBool("isDead", true);
 
             this.StartPlayerDeathTime = Time.time;
@@ -268,6 +271,5 @@ public class PlayerInteraction : MonoBehaviour
 
         StartBreathingTime = Time.time;
 
-        KilledOnlyOnceBySpike = false;
     }
 }
