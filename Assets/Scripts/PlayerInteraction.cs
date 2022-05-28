@@ -122,6 +122,10 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 break;
 
+            case "ResetEnemyAttack":
+                IsEnemyAttacking = false;
+                break;
+
             // all cases that player will die
             case "Blade":
                 PlayerKilled(UnlocksHandler.EPowers.Crawl);
@@ -271,7 +275,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void PlayerKilled(UnlocksHandler.EPowers unlockedPower)
     {
-        if (!killedOnlyOnce && (!(unlockedPower == UnlocksHandler.EPowers.AttackEnemy)) || (unlockedPower == UnlocksHandler.EPowers.AttackEnemy && !unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy]))
+        if (!killedOnlyOnce)
         {
             killedOnlyOnce = true;
 
@@ -290,7 +294,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         IsPlayerDead = false;
         IsEnemyDead = false;
-        IsEnemyAttacking = false;
         IsWallAppeared = false;
         AllreadyAttacked = false;
 
