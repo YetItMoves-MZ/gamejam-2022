@@ -52,6 +52,11 @@ public class PlayerInteraction : MonoBehaviour
     [Tooltip("Player animator")]
     [SerializeField] private Animator PlayerAnimator;
 
+    [Header("Animator Prefabs")]
+    [SerializeField] private RuntimeAnimatorController PlayerAnimatorPrefab;
+    [SerializeField] private RuntimeAnimatorController PlayerAnimatorPrefabWithBox;
+
+
     [Header("Scripts")]
     [Tooltip("The unlocks handler script located in unlocks handler game object")]
     [SerializeField] private UnlocksHandler unlocksHandler;
@@ -165,6 +170,8 @@ public class PlayerInteraction : MonoBehaviour
                     PlayerBox.SetActive(false);
                     InvisibleBox.SetActive(false);
                     PlacedBox.SetActive(true);
+
+                    PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefab as RuntimeAnimatorController;
                 }
                 break;
             case "HitEnemy":
@@ -187,10 +194,11 @@ public class PlayerInteraction : MonoBehaviour
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PickUpBox] && Input.GetAxis("Use") != 0)
                 {
                     PlayerBox.SetActive(true);
-                    // BUG fix animations for box here
                     otherObject.SetActive(false);
                     holdBox = true;
                     CielingBeneathBoulder.SetActive(false);
+
+                    PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefabWithBox as RuntimeAnimatorController;
 
 
 

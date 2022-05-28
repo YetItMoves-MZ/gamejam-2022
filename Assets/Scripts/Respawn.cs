@@ -49,6 +49,10 @@ namespace Player
         [Tooltip("Enemy animator")]
         [SerializeField] private Animator EnemyAnimator;
 
+        [Header("Animator Prefabs")]
+        [SerializeField] private RuntimeAnimatorController PlayerAnimatorPrefab;
+
+
 
         public void RespawnPlayer()
         {
@@ -69,10 +73,10 @@ namespace Player
             PlayerAnimator.SetFloat("Speed", 0);
             PlayerAnimator.SetBool("isDead", false);
 
-            // BUG revert box animations here
-
             this.EnemyAnimator.SetBool("isDead", false);
             this.EnemyAnimator.SetBool("canAttack", false);
+
+            PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefab as RuntimeAnimatorController;
 
             CielingDescend.ResetPlacement();
             openCage.ResetPlacement();
