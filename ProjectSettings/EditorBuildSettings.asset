@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Cake Temple.unity
+    guid: 156dc98f21914004eac6ddf740de0143
   m_configObjects: {}
