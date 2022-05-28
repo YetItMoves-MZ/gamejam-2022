@@ -18,6 +18,7 @@ namespace Player
         [SerializeField] private GameObject PlacedBox;
         [SerializeField] private GameObject Enemy;
         [SerializeField] private GameObject Key;
+        [SerializeField] private GameObject WallBehindCrusher;
 
         [Header("Images")]
         [SerializeField] private Image KeyImage;
@@ -58,6 +59,7 @@ namespace Player
             this.Enemy.SetActive(true);
             this.Key.SetActive(false);
             this.playerBox.SetActive(false);
+            this.WallBehindCrusher.SetActive(false);
             this.KeyImage.enabled = false;
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
