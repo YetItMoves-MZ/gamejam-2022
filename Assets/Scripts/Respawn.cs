@@ -16,6 +16,7 @@ namespace Player
         [Tooltip("make sure both doors are in the same order here as the respawn locations")]
         [SerializeField] private GameObject[] Doors;
         [SerializeField] private GameObject PlacedBox;
+        [SerializeField] private GameObject InvisibleBox;
         [SerializeField] private GameObject Enemy;
         [SerializeField] private GameObject Key;
         [SerializeField] private GameObject WallBehindCrusher;
@@ -60,6 +61,7 @@ namespace Player
             this.Key.SetActive(false);
             this.playerBox.SetActive(false);
             this.WallBehindCrusher.SetActive(false);
+            this.InvisibleBox.SetActive(true);
             this.KeyImage.enabled = false;
 
             unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Key] = false;
