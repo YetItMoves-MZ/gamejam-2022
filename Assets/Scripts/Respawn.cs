@@ -52,7 +52,7 @@ namespace Player
         public void RespawnPlayer()
         {
             this.player.transform.position = PlayerSpawner.transform.position;
-            this.Boulder.GetComponent<Rigidbody>().position = BoulderSpawner.transform.position;
+
             this.CielingBeneathBoulder.SetActive(true);
             this.BoxBeneathBoulder.SetActive(true);
             this.PlacedBox.SetActive(false);

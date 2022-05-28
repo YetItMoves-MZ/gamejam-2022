@@ -36,6 +36,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject CielingBeneathBoulder;
 
 
+
     [Header("UI")]
     [Tooltip("The respawn UI game object")]
     [SerializeField] private GameObject RespawnUI;
@@ -58,6 +59,13 @@ public class PlayerInteraction : MonoBehaviour
     [Tooltip("Open cage Script that is located in Cage Pivot")]
     [SerializeField] private OpenCage openCage;
 
+    [Header("Prefabs")]
+    [Tooltip("The boulder prefab")]
+    [SerializeField] private GameObject Boulder;
+
+    [Header("Respawn Locations")]
+    [SerializeField] private Transform BoulderSpawner;
+
     // When did the enemy die
     private float StartEnemyDeathTime;
     private float StartEnemyAttackTime;
@@ -73,6 +81,8 @@ public class PlayerInteraction : MonoBehaviour
     [HideInInspector] public bool killedOnlyOnce = false;
 
     [HideInInspector] public bool holdBox = false;
+
+    [HideInInspector] public GameObject InstantiatedBoulder;
 
     private void Start()
     {
@@ -167,6 +177,12 @@ public class PlayerInteraction : MonoBehaviour
                     otherObject.SetActive(false);
                     holdBox = true;
                     CielingBeneathBoulder.SetActive(false);
+
+
+
+                    InstantiatedBoulder = Instantiate(Boulder, BoulderSpawner.position, BoulderSpawner.rotation);
+
+                    Debug.Log("Instantiated boulder! : " + InstantiatedBoulder);
                 }
                 break;
             case "Door":
@@ -270,6 +286,8 @@ public class PlayerInteraction : MonoBehaviour
         holdBox = false;
 
         StartBreathingTime = Time.time;
+
+        Destroy(InstantiatedBoulder);
 
     }
 }
