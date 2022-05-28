@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invisibile box
       objectReference: {fileID: 0}
+    - target: {fileID: 1560329846364035785, guid: 2642505774f141347964c353d5466f35, type: 3}
+      propertyPath: m_TagString
+      value: BoxPlacement
+      objectReference: {fileID: 0}
     - target: {fileID: 7667629680276951572, guid: 2642505774f141347964c353d5466f35, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
