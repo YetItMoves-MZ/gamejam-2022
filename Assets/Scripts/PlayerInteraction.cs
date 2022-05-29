@@ -311,7 +311,6 @@ public class PlayerInteraction : MonoBehaviour
         FirstRespawn = true;
         IsPlayerDead = false;
         IsEnemyDead = false;
-        // IsWallAppeared = false;
 
         holdBox = false;
 
