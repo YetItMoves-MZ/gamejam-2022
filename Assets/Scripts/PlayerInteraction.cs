@@ -176,6 +176,7 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             case "SpawnArea":
                 killedOnlyOnce = false;
+                IsWallAppeared = false;
                 break;
             case "BoxPlacement":
                 if (holdBox == true && Input.GetAxis("Use") != 0)
@@ -310,7 +311,7 @@ public class PlayerInteraction : MonoBehaviour
         FirstRespawn = true;
         IsPlayerDead = false;
         IsEnemyDead = false;
-        IsWallAppeared = false;
+        // IsWallAppeared = false;
 
         holdBox = false;
 
