@@ -4550,6 +4550,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 4f7c2d7c29088004dbcc16f476b640e6, type: 2}
     - target: {fileID: 4931175778649618264, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
+      propertyPath: box
+      value: 
+      objectReference: {fileID: 905657419}
+    - target: {fileID: 4931175778649618264, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
+      propertyPath: boxY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931175778649618264, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1760068717}

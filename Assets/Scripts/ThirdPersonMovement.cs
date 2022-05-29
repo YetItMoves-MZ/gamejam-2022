@@ -15,6 +15,10 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Crouching Variables")]
     [Tooltip("The height of the character while crouching")]
     [SerializeField] private float heightChange = 0.5f;
+    [Tooltip("The game object of the player box")]
+    [SerializeField] private GameObject box;
+    [Tooltip("the hight intended to reduce the box when crouching")]
+    [SerializeField] private float boxY;
 
     [Header("Dashing Variables")]
     [Tooltip("Dashing speed")]
@@ -372,6 +376,11 @@ public class ThirdPersonMovement : MonoBehaviour
             this.controller.center = new Vector3(this.controller.center.x, this.heightChange, this.controller.center.z);
             this.CpslCollider.height = this.CapsuleColliderStartingHeight / 2;
 
+            if (playerInteraction.holdBox)
+            {
+                box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y - boxY, box.transform.position.z);
+            }
+
         }
         else if (Input.GetButtonDown("Crouch") && this.IsCrouching)
         {
@@ -381,6 +390,10 @@ public class ThirdPersonMovement : MonoBehaviour
             this.controller.height = this.PlayerStartHeight;
             this.controller.center = new Vector3(controller.center.x, this.ColliderStartHeight, controller.center.z);
             this.CpslCollider.height = this.CapsuleColliderStartingHeight;
+            if (playerInteraction.holdBox)
+            {
+                box.transform.position = new Vector3(box.transform.position.x, box.transform.position.y + boxY, box.transform.position.z);
+            }
         }
     }
 
