@@ -377,50 +377,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 318788ae4357e3b42bf0659841a30bfb, type: 3}
   m_PrefabInstance: {fileID: 128847417}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &139242414
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139242416}
-  - component: {fileID: 139242415}
-  m_Layer: 0
-  m_Name: Player attack enemy
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &139242415
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139242414}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 2.386345}
-  m_Center: {x: 0, y: 1, z: 0.69317245}
---- !u!4 &139242416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139242414}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4999981, z: -0.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 681284991}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232312541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3937636290084166455, guid: ec5c3d98ca93a2e4e8adc9dff5c76fb0, type: 3}
@@ -1438,11 +1394,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7405916225706913685, guid: 9f5ad4de142baab46b0d9a1df2734d52, type: 3}
   m_PrefabInstance: {fileID: 7405916225027734251}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &681284991 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7405916225706913684, guid: 9f5ad4de142baab46b0d9a1df2734d52, type: 3}
-  m_PrefabInstance: {fileID: 7405916225027734251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &698913851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,8 +1682,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1656847, y: 2.405455, z: 1.5583954}
-  m_Center: {x: -0.08284235, y: 0.7027273, z: -0.2791977}
+  m_Size: {x: 18.24532, y: 6.8468466, z: 17.86506}
+  m_Center: {x: -4.5260067, y: 2.9234233, z: -6.435769}
 --- !u!1 &905657419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4953570231490753823, guid: a070bb15b512ba7439d1ec0e8d43836f, type: 3}
@@ -2011,15 +1962,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2018522481729995848, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.03293004
+      value: -0.032930035
       objectReference: {fileID: 0}
     - target: {fileID: 2018522481729995848, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9204519
+      value: 0.9204518
       objectReference: {fileID: 0}
     - target: {fileID: 2018522481729995848, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.07949963
+      value: -0.07949962
       objectReference: {fileID: 0}
     - target: {fileID: 2018522482269542894, guid: c0a73551ffb5fdc47b69cddf83ba261b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3300,7 +3251,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760068714}
-  m_LocalRotation: {x: -0.039841335, y: 0.9188581, z: -0.09618489, w: -0.380606}
+  m_LocalRotation: {x: -0.03984134, y: 0.9188581, z: -0.09618489, w: -0.380606}
   m_LocalPosition: {x: 13.8931465, y: 2.5, z: 9.496672}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3451,7 +3402,7 @@ PrefabInstance:
       objectReference: {fileID: 268422047}
     - target: {fileID: 3776184145012544570, guid: 3f1cad898c5cf9c468196f18122de82b, type: 3}
       propertyPath: InitAllPowerActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3776184145012544570, guid: 3f1cad898c5cf9c468196f18122de82b, type: 3}
       propertyPath: NarratorMesseges.Array.size
@@ -4783,7 +4734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405916225706913685, guid: 9f5ad4de142baab46b0d9a1df2734d52, type: 3}
       propertyPath: m_TagString
-      value: HitEnemy
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8764067845302697667, guid: 9f5ad4de142baab46b0d9a1df2734d52, type: 3}
       propertyPath: m_Size.z

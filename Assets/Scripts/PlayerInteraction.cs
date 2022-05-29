@@ -86,6 +86,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool IsBoxEploading = false;
     private bool IsWallAppeared = false;
     private bool AllreadyAttacked = false;
+    private bool FirstRespawn = false;
     // dont know why the player dies twice to spikes so i hard coded it for now
     [HideInInspector] public bool killedOnlyOnce = false;
 
@@ -113,12 +114,25 @@ public class PlayerInteraction : MonoBehaviour
         {
             // special case of player death, also need to see the enemy attacking animation first.
             case "Enemy":
-                if (AllreadyAttacked)
+                if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy])
                 {
-                    this.StartEnemyAttackTime = Time.time;
+                    if (AllreadyAttacked)
+                    {
+                        this.StartEnemyAttackTime = Time.time;
+                    }
+                    IsEnemyAttacking = true;
+                    this.EnemyAnimator.SetBool("canAttack", true);
                 }
-                IsEnemyAttacking = true;
-                this.EnemyAnimator.SetBool("canAttack", true);
+                else
+                {
+                    if (Input.GetAxis("Use") != 0)
+                    {
+                        EnemyAnimator.SetBool("isDead", true);
+
+                        StartEnemyDeathTime = Time.time;
+                        IsEnemyDead = true;
+                    }
+                }
                 break;
             case "BoxWithButton":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PushButton] && Input.GetAxis("Use") != 0)
@@ -174,15 +188,6 @@ public class PlayerInteraction : MonoBehaviour
                     PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefab as RuntimeAnimatorController;
                 }
                 break;
-            case "HitEnemy":
-                if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.AttackEnemy] && Input.GetAxis("Use") != 0)
-                {
-                    EnemyAnimator.SetBool("isDead", true);
-
-                    StartEnemyDeathTime = Time.time;
-                    IsEnemyDead = true;
-                }
-                break;
             case "Key":
                 if (Input.GetAxis("Use") != 0)
                 {
@@ -199,8 +204,6 @@ public class PlayerInteraction : MonoBehaviour
                     CielingBeneathBoulder.SetActive(false);
 
                     PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefabWithBox as RuntimeAnimatorController;
-
-
 
                     InstantiatedBoulder = Instantiate(Boulder, BoulderSpawner.position, BoulderSpawner.rotation);
 
@@ -271,7 +274,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandlePlayerBreathing()
     {
-        if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Breath] && unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Movement])
+        if (!unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.Breath] && FirstRespawn)
         {
             if (BreathingTime < Time.time - StartBreathingTime)
             {
@@ -291,22 +294,26 @@ public class PlayerInteraction : MonoBehaviour
             this.StartPlayerDeathTime = Time.time;
             this.IsPlayerDead = true;
 
-            unlocksHandler.GainedPower.Invoke(unlockedPower);
 
+            if (!unlocksHandler.IsPowerActive[(int)unlockedPower])
+            {
+                unlocksHandler.GainedPower.Invoke(unlockedPower);
+            }
             Cursor.lockState = CursorLockMode.None;
         }
     }
 
     public void ResetStats()
     {
+        StartBreathingTime = Time.time;
+
+        FirstRespawn = true;
         IsPlayerDead = false;
         IsEnemyDead = false;
         IsWallAppeared = false;
 
         holdBox = false;
 
-        StartBreathingTime = Time.time;
         Destroy(InstantiatedBoulder);
-
     }
 }
