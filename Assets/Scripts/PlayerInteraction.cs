@@ -60,6 +60,8 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Scripts")]
     [Tooltip("The unlocks handler script located in unlocks handler game object")]
     [SerializeField] private UnlocksHandler unlocksHandler;
+    [Tooltip("The third person movement script that is located in player game object")]
+    [SerializeField] private ThirdPersonMovement thirdPersonMovement;
     [Tooltip("Descend script that is located in Ceiling")]
     [SerializeField] private Descend CielingDescend;
     [Tooltip("Open door Scripts that are located in Door + Door Crusher")]
@@ -199,16 +201,27 @@ public class PlayerInteraction : MonoBehaviour
             case "Box":
                 if (unlocksHandler.IsPowerActive[(int)UnlocksHandler.EPowers.PickUpBox] && Input.GetAxis("Use") != 0)
                 {
-                    PlayerBox.SetActive(true);
+                    this.PlayerBox.SetActive(true);
                     otherObject.SetActive(false);
-                    holdBox = true;
-                    CielingBeneathBoulder.SetActive(false);
+                    this.holdBox = true;
+                    this.CielingBeneathBoulder.SetActive(false);
 
-                    PlayerAnimator.runtimeAnimatorController = PlayerAnimatorPrefabWithBox as RuntimeAnimatorController;
+                    bool IsCrouching = PlayerAnimator.GetBool("Crouching");
 
-                    InstantiatedBoulder = Instantiate(Boulder, BoulderSpawner.position, BoulderSpawner.rotation);
+                    this.PlayerAnimator.runtimeAnimatorController = this.PlayerAnimatorPrefabWithBox as RuntimeAnimatorController;
 
-                    Debug.Log("Instantiated boulder! : " + InstantiatedBoulder);
+                    if (IsCrouching)
+                    {
+                        this.PlayerBox.transform.position = new Vector3(
+                            this.PlayerBox.transform.position.x,
+                            this.PlayerBox.transform.position.y - this.thirdPersonMovement.boxY,
+                            this.PlayerBox.transform.position.z);
+
+                        this.PlayerAnimator.SetBool("Crouching", IsCrouching);
+                    }
+                    this.InstantiatedBoulder = Instantiate(this.Boulder, this.BoulderSpawner.position, this.BoulderSpawner.rotation);
+
+                    Debug.Log("Instantiated boulder! : " + this.InstantiatedBoulder);
                 }
                 break;
             case "Door":

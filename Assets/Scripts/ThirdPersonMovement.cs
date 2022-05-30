@@ -18,7 +18,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Tooltip("The game object of the player box")]
     [SerializeField] private GameObject box;
     [Tooltip("the hight intended to reduce the box when crouching")]
-    [SerializeField] private float boxY;
+    public float boxY;
 
     [Header("Dashing Variables")]
     [Tooltip("Dashing speed")]
