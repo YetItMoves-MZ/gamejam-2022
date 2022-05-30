@@ -6,8 +6,8 @@ But our hero forgot everything he knows about traversing this temple and will on
 
 Lead level designer: 
 
-Lead programmer: YetItMoves-MZ - https://github.com/YetItMoves-MZ
+Lead programmer: YetItMoves - https://github.com/YetItMoves-MZ
 
-Lead artist: Bluecat93 - https://github.com/bluecat93
+Lead artist: Bluecat
 
 Beta testers:
