@@ -10,4 +10,4 @@ Lead programmer: YetItMoves - https://github.com/YetItMoves-MZ
 
 Lead artist: Bluecat
 
-Beta testers:
+Beta tester: PecYog
