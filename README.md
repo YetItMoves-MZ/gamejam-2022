@@ -8,6 +8,6 @@ Lead level design:
 
 Lead programmer:
 
-Lead Artist: 
+Lead artist: 
 
 Beta testers:
